@@ -4,7 +4,6 @@ local options = {
   -- Colors
   termguicolors = true,
   colorcolumn = "120",
-  cursorline = true,
   fileencoding = "utf-8",
   guicursor = "",
 
@@ -40,15 +39,14 @@ local options = {
   splitbelow = true,
   splitright = true,
 
+  -- Padding
   sidescrolloff = 12,
-  scrolloff = 12,
-
+  scrolloff = 8,
   updatetime = 300,
   signcolumn = "yes",
-  wrap = false,
+  wrap = false
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
