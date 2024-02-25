@@ -27,7 +27,15 @@ return {
         print("Error loading lspconfig")
       end
 
+      local cmp_nvim_status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+      if not cmp_nvim_status then
+        print("Error loading lspconfig from nvim-cmp")
+      end
+
+      local capabilities = cmp_lsp.default_capabilities()
+
       lspconfig.lua_ls.setup {
+        capabilities = capabilities,
         settings = {
           Lua = {
             diagnostics = {
@@ -38,13 +46,27 @@ return {
           }
         }
       }
-      lspconfig.bashls.setup {}
-      lspconfig.tsserver.setup {}
-      lspconfig.pyright.setup {}
-      lspconfig.clangd.setup {}
-      lspconfig.sqlls.setup {}
-      lspconfig.terraformls.setup {}
-
+      lspconfig.bashls.setup {
+        capabilities = capabilities
+      }
+      lspconfig.tsserver.setup {
+        capabilities = capabilities
+      }
+      lspconfig.pyright.setup {
+        capabilities = capabilities
+      }
+      lspconfig.clangd.setup {
+        capabilities = capabilities
+      }
+      lspconfig.sqlls.setup {
+         capabilities = capabilities
+      }
+      lspconfig.terraformls.setup {
+         capabilities = capabilities
+      }
+      lspconfig.tflint.setup {
+         capabilities = capabilities
+      }
 
       -- Global mappings
       -- See :help vim.diagnostic.* for documentation on any of the below functions
@@ -58,9 +80,6 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
-          -- Enable completion triggered by <C-x><C-o>
-          vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
           -- Buffer local mappings
           -- See :help vim.lsp.* for documentation on any of the below functions
           local opts = { buffer = ev.buf }

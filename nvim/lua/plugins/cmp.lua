@@ -6,7 +6,7 @@ return {
   {"hrsh7th/cmp-nvim-lua"},
   {
     "hrsh7th/nvim-cmp",
-    config = function() 
+    config = function()
 
       local status, cmp = pcall(require, "cmp")
       if not status then
@@ -17,11 +17,11 @@ return {
       if not status then
         print("Error loading luasnip from nvim-cmp")
       end
-      
+
       cmp.setup({
         snippet = {
           expand = function(args)
-            luasnip.lsp_expand(args.body) 
+            luasnip.lsp_expand(args.body)
           end,
         },
         mapping = cmp.mapping.preset.insert({
@@ -48,7 +48,7 @@ return {
           },
         },
       })
-      
+
       -- Use buffer source for "/" and "?"
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
@@ -66,23 +66,6 @@ return {
           { name = "cmdline" }
         })
       })
-
-     
-      -- Set up capabilites for lspconfig completions
-      -- local status, lspconfig = pcall(require, "lspconfig")
-      -- if not status then
-      --   print("Error loading lspconfig from nvim-cmp")
-      -- end
-      --
-      -- local status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-      -- if not status then
-      --   print("Error loading lspconfig from nvim-cmp")
-      -- end
-      
-      -- local capabilities = cmp_lsp.default_capabilites()
-      -- lspconfig["LSP SERVER NAME"].setup {
-      --   capabilities = capabilities 
-      -- }
 
     end
   },
