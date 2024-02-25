@@ -25,11 +25,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 -- Keep J inplace during inline concat
 vim.keymap.set("n", "J", "mzJ`z", opts)
 
--- Keep cursos in the middle during common navigation.
+-- Keep cursor in the middle during common navigation.
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
-vim.keymap.set("n", "<C-e>", "zz<C-e>", opts)
-vim.keymap.set("n", "<C-y>", "zz<C-y>", opts)
+vim.keymap.set("n", "<C-e>", "zz<C-e>j", opts)
+vim.keymap.set("n", "<C-y>", "zz<C-y>k", opts)
 vim.keymap.set("n", "{", "{zz", opts)
 vim.keymap.set("n", "}", "}zz", opts)
 vim.keymap.set("n", "n", "nzz", opts)
