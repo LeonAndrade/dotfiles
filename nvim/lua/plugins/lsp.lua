@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    config = function() 
+    config = function()
       local status, mason = pcall(require, "mason")
       if not status then
         print("Error loading mason")
@@ -11,23 +11,40 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function() 
+    config = function()
       local status, mason_lsp  = pcall(require, "mason-lspconfig")
       if not status then
         print("Error loading mason-lspconfig")
       end
       mason_lsp.setup()
-    end  
+    end
   },
   {
     "neovim/nvim-lspconfig",
-    config = function() 
+    config = function()
       local status, lspconfig = pcall(require, "lspconfig")
       if not status then
         print("Error loading lspconfig")
       end
 
-      -- Setup individual server configs 
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {
+                "vim"
+              }
+            }
+          }
+        }
+      }
+      lspconfig.bashls.setup {}
+      lspconfig.tsserver.setup {}
+      lspconfig.pyright.setup {}
+      lspconfig.clangd.setup {}
+      lspconfig.sqlls.setup {}
+      lspconfig.terraformls.setup {}
+
 
       -- Global mappings
       -- See :help vim.diagnostic.* for documentation on any of the below functions
@@ -57,11 +74,11 @@ return {
           vim.keymap.set("n", "<space>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, opts)
-          vim.keymaps.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-          vim.keymaps.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-          vim.keymaps.set({ "n","v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-          vim.keymaps.set("n", "gr", vim.lsp.buf.references, opts)
-          vim.keymaps.set("n", "gr", function()
+          vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set({ "n","v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "gr", function()
             vim.lsp.buf.format { async = true }
           end, opts)
         end,
