@@ -58,19 +58,19 @@ return {
       lspconfig.clangd.setup {
         capabilities = capabilities
       }
-      lspconfig.sqlls.setup {
-         capabilities = capabilities
-      }
       lspconfig.terraformls.setup {
          capabilities = capabilities
       }
       lspconfig.tflint.setup {
          capabilities = capabilities
       }
+      lspconfig.gopls.setup {
+         capabilities = capabilities
+      }
 
       -- Global mappings
       -- See :help vim.diagnostic.* for documentation on any of the below functions
-      vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+      vim.keymap.set("n", "<space>d", vim.diagnostic.open_float)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
