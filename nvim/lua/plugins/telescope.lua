@@ -3,7 +3,7 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function() 
+    config = function()
 
       -- Load telescope
       local status, telescope = pcall(require, "telescope")
@@ -12,14 +12,14 @@ return {
       end
 
       -- Load telescope builtin module
-      local status, builtin = pcall(require, "telescope.builtin")
-      if not status then
+      local builtin_status, builtin = pcall(require, "telescope.builtin")
+      if not builtin_status then
        print("error loading telescope.builtin")
       end
-      
+
       -- Load telescope actions module
-      local status, actions = pcall(require, "telescope.actions")
-      if not status then
+      local actions_status, actions = pcall(require, "telescope.actions")
+      if not actions_status then
        print("error loading telescope.actions")
       end
 
@@ -29,6 +29,8 @@ return {
             i = {
               ["<esc>"] = actions.close,
               ["<C-u>"] = false,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
             },
           },
         },
@@ -40,7 +42,7 @@ return {
       }
 
       telescope.load_extension('fzf')
-     
+
       local opts = { noremap = true, silent = true }
       vim.keymap.set("n", "<leader>f", builtin.find_files, opts)
       vim.keymap.set("n", "<leader>b", ":Telescope buffers sort_mru=true sort_lastused=true<CR>", opts)
