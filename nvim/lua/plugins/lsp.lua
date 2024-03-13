@@ -49,9 +49,6 @@ return {
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.tsserver.setup({
-				capabilities = capabilities,
-			})
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
@@ -88,9 +85,9 @@ return {
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-					vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wl", function()
+					vim.keymap.set("n", "<space>la", vim.lsp.buf.add_workspace_folder, opts)
+					vim.keymap.set("n", "<space>lr", vim.lsp.buf.remove_workspace_folder, opts)
+					vim.keymap.set("n", "<space>ll", function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end, opts)
 					vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
