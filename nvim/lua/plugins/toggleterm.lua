@@ -1,6 +1,6 @@
 return {
 	"akinsho/toggleterm.nvim",
-	tag = "*",
+	tags = "*",
 	config = function()
 		local status, toggleterm = pcall(require, "toggleterm")
 		if not status then
