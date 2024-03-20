@@ -7,6 +7,11 @@ return {
 			print("Error loading nvim-treesitter")
 		end
 
+		local parser_status, tree_parser = pcall(require, "nvim-treesitter.parsers")
+		if not parser_status then
+			print("Error loading nvim-treesitter")
+		end
+
 		configs.setup({
 			ensure_installed = {
 				"bash",
@@ -42,5 +47,7 @@ return {
 				},
 			},
 		})
+
+		vim.treesitter.language.register("markdown", "mdx")
 	end,
 }
