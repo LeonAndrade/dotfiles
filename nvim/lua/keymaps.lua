@@ -53,3 +53,6 @@ vim.keymap.set("n", "<leader>O", "O<ESC>j", opts)
 
 -- Undo tree keymap
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- Format json file
+vim.keymap.set("n", "<leader>jq", ":%!jq .<CR>", opts)

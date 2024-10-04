@@ -67,7 +67,9 @@ return {
 			lspconfig.mdx_analyzer.setup({
 				capabilities = capabilities,
 			})
-
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 			-- Global mappings
 			-- See :help vim.diagnostic.* for documentation on any of the below functions
 			vim.keymap.set("n", "<space>d", vim.diagnostic.open_float)
