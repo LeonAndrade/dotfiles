@@ -19,4 +19,10 @@ require("keymaps")
 require("commands")
 require("lazy").setup("plugins", {})
 
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = "~/.venvs/nvim_venv/bin/python3"
+
 vim.cmd.colorscheme("catppuccin")

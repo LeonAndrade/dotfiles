@@ -22,7 +22,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
--- Keep J inplace during inline concat
+-- Keep cursor inplace during inline concat
 vim.keymap.set("n", "J", "mzJ`z", opts)
 
 -- Keep cursor in the middle during common navigation.
