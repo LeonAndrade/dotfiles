@@ -40,8 +40,8 @@ local options = {
 	splitright = true,
 
 	-- Padding
-	sidescrolloff = 12,
-	scrolloff = 8,
+	sidescrolloff = 4,
+	scrolloff = 2,
 	updatetime = 300,
 	signcolumn = "yes",
 	wrap = false,
