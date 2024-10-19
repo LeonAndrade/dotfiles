@@ -1,9 +1,9 @@
 return {
-  { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/cmp-nvim-lua" },
+  { "onsails/lspkind.nvim" },
   {
     "hrsh7th/nvim-cmp",
     config = function()
@@ -12,12 +12,25 @@ return {
         print("Error loading nvim-cmp")
       end
 
-      local lssnip_status, luasnip = pcall(require, "luasnip")
-      if not lssnip_status then
+      local luasnip_status, luasnip = pcall(require, "luasnip")
+      if not luasnip_status then
+        print("Error loading luasnip from nvim-cmp")
+      end
+
+      local lspkind_status, lspkind = pcall(require, "lspkind")
+      if not lspkind_status then
         print("Error loading luasnip from nvim-cmp")
       end
 
       cmp.setup({
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+            ellipsis_char = '...',
+            show_labelDetails = true,
+          }),
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)

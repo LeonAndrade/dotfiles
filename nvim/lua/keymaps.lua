@@ -40,7 +40,7 @@ vim.keymap.set("n", "*", "*zz", opts)
 vim.keymap.set("x", "<leader>p", '"_dP', opts)
 
 -- Select All and copy to system clipboard
-vim.keymap.set("n", "<leader>a", 'GVgg0"+y', opts)
+vim.keymap.set("n", "<leader>a", 'GVgg"+y', opts)
 
 -- leader y yanks selection into the system clipboard
 vim.keymap.set("n", "<leader>y", '"+y', opts)
