@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("options")
 require("keymaps")
+require("filetype")
 require("lazy").setup("plugins", {})
 
 vim.g.loaded_ruby_provider = 0
