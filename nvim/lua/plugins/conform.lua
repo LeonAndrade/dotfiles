@@ -11,7 +11,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				go = { "goimports", "gofmt" },
-				javascript = { "prettier" },
+				-- javascript = { "prettier" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

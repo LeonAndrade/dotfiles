@@ -3,7 +3,7 @@ local options = {
 
   -- Colors
   termguicolors = true,
-  colorcolumn = "80",
+  colorcolumn = "100",
   fileencoding = "utf-8",
   guicursor = "",
 

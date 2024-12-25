@@ -51,7 +51,7 @@ vim.keymap.set("v", "<leader>y", '"+y', opts)
 vim.keymap.set("n", "<leader>o", "o<ESC>k", opts)
 vim.keymap.set("n", "<leader>O", "O<ESC>j", opts)
 
--- Undo tree keymap
+-- Toggle undo tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Format json file
